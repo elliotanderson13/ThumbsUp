@@ -19,7 +19,7 @@
                 <section class="post">
                     @foreach($posts as $post)
                     <header class="post-header">
-                        <img class="post-avatar" alt="tilo Mitra&#x27;s avatar" height="48" width="48" src="img/common/tilo-avatar.png">
+                        <img class="post-avatar" alt="tilo Mitra&#x27;s avatar" height="48" width="48" src="img/{{$post->user_id}}/image01.jpg">
                         <h2 class="post-title">Post By {{User::find($post->user_id)->first_name.' '.User::find($post->user_id)->last_name}}
                         </h2>
                     </header>
@@ -30,7 +30,7 @@
                     </div>
                     @endforeach
                     <header class="post-header">
-                        <img class="post-avatar" alt="Tilo Mitra&#x27;s avatar" height="48" width="48" src="img/common/tilo-avatar.png">
+                        <img class="post-avatar" alt="Tilo Mitra&#x27;s avatar" height="48" width="48" src="img/{{$post->user_id}}/image01.jpg">
 
                         <h2 class="post-title">Thumbs Up to [NAME]</h2>
 

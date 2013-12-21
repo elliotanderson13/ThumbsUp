@@ -22,3 +22,4 @@ Route::get('/logout', 'HomeController@logout');
 Route::get('/settings', 'AccountController@settings');
 Route::post('post', 'ViewController@handlePost');
 Route::get('/home', 'HomeController@index');
+Route::post('/pic', 'AccountController@handlePic');
