@@ -20,7 +20,8 @@
                     @foreach($posts as $post)
                     <header class="post-header">
                         <img class="post-avatar" alt="tilo Mitra&#x27;s avatar" height="48" width="48" src="img/common/tilo-avatar.png">
-                        <h2 class="post-title">Post By {{$post->user_id}}</h2>
+                        <h2 class="post-title">Post By {{User::find($post->user_id)->first_name.' '.User::find($post->user_id)->last_name}}
+                        </h2>
                     </header>
                     <div class="post-description">
                         <p> 

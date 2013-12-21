@@ -9,7 +9,8 @@ class ViewController extends BaseController
 		$validator = Validator::make(Input::all(), $rules);
 		if ($validator->passes()){
 			$post = new Post;
-			$post->user_id = Sentry::getUser();
+			$user = Sentry::getUser();
+			$post->user_id = $user->id;
 			$post->content = Input::get('post');
 			$post->save();
 			return Redirect::to('home');

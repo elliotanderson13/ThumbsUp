@@ -21,7 +21,7 @@ class HomeController extends BaseController {
 	}
 	public function index()
 	{
-		$posts = Post::where('id', '>', '0')->get();
+		$posts = Post::where('id', '>', '0')->orderBy('id', 'desc')->get();
 		return View::make('home', compact('posts'));
 	}
 	public function wall()
