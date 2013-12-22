@@ -10,14 +10,16 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-Route::get('/', 'HomeController@index');
-Route::get('/profile', 'HomeController@profile');
-Route::get('/wall', 'HomeController@index');
-Route::get('/login', 'HomeController@login');
 Route::get('/register','HomeController@register');
 Route::post('/register','HomeController@handleRegister');
 Route::post('/login', 'HomeController@handleLogin');
+Route::get('/login', 'HomeController@login');
+
+Route::group(array('before'=>'auth'), function()
+{
+	Route::get('/', 'HomeController@index');
+Route::get('/profile', 'HomeController@profile');
+Route::get('/wall', 'HomeController@index');
 Route::get('/logout', 'HomeController@logout');
 Route::get('/settings', 'AccountController@settings');
 Route::post('post', 'ViewController@handlePost');
@@ -28,3 +30,6 @@ Route::post('/edit', 'AccountController@handleEdit');
 Route::get('/thumb', 'ThumbController@index');
 Route::post('/thumb', 'ThumbController@handle');
 Route::get('/tag/{tag_name}', 'ThumbController@tags');
+
+});
+

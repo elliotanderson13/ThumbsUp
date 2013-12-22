@@ -78,7 +78,11 @@ function a(b){
                 <fieldset>
 
                     <label for="name">Give Somebody A Thumbs Up</label>
+                    @if(Session::has('error'))
+                    <input type="text" id="name" name="name" placeholder="Person's Username" style="border:1px solid red;" />
+                    @else
                     <input type="text" id="name" name="name" placeholder="Person's Username" />
+                    @endif
                     <textarea id="post" name="post" placeholder="Your Comment" style="width: 100%;resize: none; "></textarea>
                     <input type="text" name="tags" placeholder="Tags Separated by Commas" style="width: 100%" />
                     <input type="submit" class="pure-button pure-button-primary" value="Post" />

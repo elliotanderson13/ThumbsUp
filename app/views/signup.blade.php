@@ -15,7 +15,7 @@
 					<input type="text" class="pure-input-2-4" placeholder="Username" name="username" />
 					<input type="email" class="pure-input-2-4" placeholder="Email" name="email" />
 					<input type="password" class="pure-input-2-4" placeholder="Password" name="password" />
-					<input type="password" class="pure-input-2-4" placeholder="Confirm Password" name="cpassword" />
+					 <input type="password" class="pure-input-2-4" placeholder="Confirm Password" name="cpassword" />
 				</fieldset>
 				<input type="submit" class="pure-button pure-input-1-4 pure-button-primary" value="Create Account" style="width:186px;font-size:10pt" />
 			</fieldset>
