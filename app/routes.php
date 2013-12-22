@@ -23,3 +23,8 @@ Route::get('/settings', 'AccountController@settings');
 Route::post('post', 'ViewController@handlePost');
 Route::get('/home', 'HomeController@index');
 Route::post('/pic', 'AccountController@handlePic');
+Route::get('/edit', 'AccountController@editProfile');
+Route::post('/edit', 'AccountController@handleEdit');
+Route::get('/thumb', 'ThumbController@index');
+Route::post('/thumb', 'ThumbController@handle');
+Route::get('/tag/{tag_name}', 'ThumbController@tags');

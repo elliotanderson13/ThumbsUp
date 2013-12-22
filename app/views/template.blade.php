@@ -1,6 +1,12 @@
 <?php
-$user = Sentry::getUser();
-$user_name = $user->first_name.' '.$user->last_name;
+if (!Sentry::check())
+{
+
+} else {
+    $user = Sentry::getUser();
+    $user_id = $user->id;
+    $user_name = $user->first_name.' '.$user->last_name;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,8 +19,13 @@ $user_name = $user->first_name.' '.$user->last_name;
 
     
 <style type="text/css">
+@font-face 
+{
+    font-family: thumbs;
+    src: url("{{url('css/thumbs.otf')}}");
+}
 body {
-    font-family: Helvetica;
+    font-family: thumbs;
 }
 li > a:hover {
     text-decoration: none;
@@ -48,13 +59,13 @@ li > a:hover {
 
             <ul>
                 @if(!Sentry::check())
-                <li><a href="login">Login</a></li>
-                <li><a href="register">Register</a></li>
+                <li><a href="{{url('login')}}">Login</a></li>
+                <li><a href="{{url('register')}}">Register</a></li>
                 @else
-                <li><a href="logout">Logout</a></li>
+                <li><a href="{{url('logout')}}">Logout</a></li>
                 <li><a href="{{action('HomeController@profile')}}">{{$user_name}}</a></li>
-                <li><a href="wall">Wall</a></li>
-                <li><a href="settings">Account Settings</a></li>
+                <li><a href="{{url('wall')}}">Wall</a></li>
+                <li><a href="{{url('settings')}}">Account Settings</a></li>
                 @endif
             </ul>
         </div>

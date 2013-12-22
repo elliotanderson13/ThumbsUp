@@ -12,6 +12,7 @@ class ViewController extends BaseController
 			$user = Sentry::getUser();
 			$post->user_id = $user->id;
 			$post->content = Input::get('post');
+			$post->type = 'Post';
 			$post->save();
 			return Redirect::to('home');
 		} else {
