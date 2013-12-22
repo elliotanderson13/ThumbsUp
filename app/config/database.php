@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'facebook',
 			'username'  => 'root',
-			'password'  => 'Nsr10ojif??',
+			'password'  => 'root',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
