@@ -43,6 +43,7 @@ document.getElementById("p").value = c[0];
 				    <fieldset>
 				        <label for="c">Keep me logged in
 				        </label>
+				        <input type="checkbox" id="c">
 				    </fieldset>
 				</form>
 				<input type="submit" class="pure-button pure-button-input-1-4 pure-button-primary" value="Log In" style="font-size:10pt;width:186px" />

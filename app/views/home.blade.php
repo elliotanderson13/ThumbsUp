@@ -34,6 +34,26 @@
         opacity: 1;
         text-decoration: none;
       }
+      .ui-state-focus{
+        border:none;
+         background-color: #000;
+      }
+      .ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+    background: #ddd;
+    font-weight: normal;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 0px;
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
+    background-image: none;
+}
 </style>
 <script type="text/javascript">
 function a(b){
@@ -47,6 +67,7 @@ function a(b){
     document.getElementById(d[3]).className = "pure-menu-norm";
     document.getElementById()
 }
+
 </script>
 
             <!-- A wrapper for all the blog posts -->
@@ -76,12 +97,37 @@ function a(b){
                     'class'=>'pure-form pure-form-stacked'
                 ))}}
                 <fieldset>
-
+                    <script type="text/javascript">
+                    $(document).ready(function(){
+                    
+                    $( "#nameO" ).autocomplete({
+                    source: [
+                        <?php 
+                            $users = DB::table('users')->get();
+                            $quan = 0;
+                            foreach ($users as $user)
+                            {
+                                if ($quan != 0) {
+                                    echo ",\n";
+                                }
+                                else {
+                                    $quan = 1;
+                                }
+                                echo "{value: '".$user->first_name." ".$user->last_name."', image: 'img/".$user->id."/image01.jpg'}";
+                            }
+                        ?>
+                    ]
+                    }).data("ui-autocomplete")._renderItem = function(ul, item){
+                        var inner_html = '<a style=""><div style=""><img style="float:left;margin-left:5px" class="post-avatar" src="'+item.image+'" width="30" height="30"><span style="font-size:10pt;line-height:30px;vertical-align:middle;float-left;padding-left:5px;">'+item.value+'</span></div></a>';
+                        return $( "<li></li>" ).data( "item.autocomplete", item ).append(inner_html).appendTo( ul );
+                    }
+                    });
+                    </script>
                     <label for="name">Give Somebody A Thumbs Up</label>
                     @if(Session::has('error'))
-                    <input type="text" id="name" name="name" placeholder="Person's Username" style="border:1px solid red;" />
+                    <input name="name" placeholder="Person's Username" style="border:1px solid red;" />
                     @else
-                    <input type="text" id="name" name="name" placeholder="Person's Username" />
+                    <input type="text" id="nameO" name="name" placeholder="Person's Username" />
                     @endif
                     <textarea id="post" name="post" placeholder="Your Comment" style="width: 100%;resize: none; "></textarea>
                     <input type="text" name="tags" placeholder="Tags Separated by Commas" style="width: 100%" />
@@ -125,6 +171,7 @@ function a(b){
                             {{$post->content}}
                         </p>
                     </div>
+                    
                     @endif
                     @endforeach
                  
