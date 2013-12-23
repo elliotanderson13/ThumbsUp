@@ -54,8 +54,18 @@
 .ui-state-focus .ui-icon {
     background-image: none;
 }
+.content-subhead a{
+    color: #aaa;
+}
+#dm{
+    text-decoration: underline;
+}
+#tm{
+    text-decoration: none;
+}
 </style>
 <script type="text/javascript">
+
 function a(b){
     var d = ["f", "e", "h", "g"];
     if (b=="c") {
@@ -67,12 +77,29 @@ function a(b){
     document.getElementById(d[3]).className = "pure-menu-norm";
     document.getElementById()
 }
+function t(w){
+    if (w=="t") {
+        document.getElementById("menu").style.display = "none";
+        document.getElementById("chaunz").style.display = "none";
+        //document.getElementById("sp").style.zoom = "200%";
+        document.getElementById("tm").style.textDecoration = "underline";
+        document.getElementById("dm").style.textDecoration = "none";
+    }
+    else {
+        document.getElementById("menu").style.display = "block";
+        document.getElementById("chaunz").style.display = "block";
+        //document.getElementById("sp").style.zoom = "100%";
+        document.getElementById("dm").style.textDecoration = "underline";
+        document.getElementById("tm").style.textDecoration = "none";
+    }
+}
 
 </script>
 
             <!-- A wrapper for all the blog posts -->
             <div class="posts">
-                <h1 class="content-subhead">Desktop Mode</h1>
+                <h1 class="content-subhead"><a href="javascript:t('d')" id="dm">Desktop Mode</a> <a id="tm" href="javascript:t('t')">TV Mode</a></h1>
+                <div id="chaunz">
                 <div class="pure-menu pure-menu-open pure-menu-horizontal">
                 <ul>
                 <li class="pure-menu-selected" id="h"><a href="javascript:a('b')">Thank Someone</a></li>
@@ -91,6 +118,7 @@ function a(b){
                 </fieldset>
                 {{Form::close()}}
                 </div>
+
                 <div id="f">
                     {{Form::open(array(
                     'url'=>'thumb',
@@ -135,8 +163,9 @@ function a(b){
                 </fieldset>
                 {{Form::close()}}
                 </div>
+            </div>
                 <!-- A single blog post -->
-                <section class="post">
+                <section class="post" id="sp">
 
                     @foreach($posts as $post)
                     @if($post->type == 'Post')
