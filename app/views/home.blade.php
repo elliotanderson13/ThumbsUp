@@ -182,7 +182,7 @@ function t(w){
                     @else 
 
                     <header class="post-header">
-                        <img class="post-avatar" alt="Tilo Mitra&#x27;s avatar" height="48" width="48" src="img/{{$post->user_id}}/image01.jpg" style="float:left; margin-right: 20px;">
+                        <img style="float:left;position:relative;top:28px;left:-12px;z-index:999" class="post-avatar" width="20" height="20" src="img/{{$post->user_id}}/image01.jpg"><img class="post-avatar" alt="Tilo Mitra&#x27;s avatar" height="48" width="48" src="img/{{User::find($post->to_id)->id}}/image01.jpg" style="float:left; margin-right: -17px;position:relative;left:-37px" >
 
                         <h2 class="post-title">Thumbs Up to {{User::find($post->to_id)->first_name.' '.User::find($post->to_id)->last_name}}</h2>
 
@@ -195,7 +195,7 @@ function t(w){
                         </p>
                     </header>
 
-                    <div class="post-description" style="padding-left: 90px;">
+                    <div class="post-description" style="padding-left: 83px;">
                         <p>
                             {{$post->content}}
                         </p>
