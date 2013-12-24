@@ -10,12 +10,12 @@ class ThumbController extends BaseController
 	{	
 		$user = Sentry::getUser();
 		$user_id  = $user->id;
-		$username = Input::get('name');
-		$username_id = User::where('username', '=', $username)->first();
+		$fullname = Input::get('name');
+		list($firstN, $lastN) = explode(" ", $fullname);
+		$username_id = User::where('first_name', '=', $firstN)->where('last_name', '=', $lastN)->first()->id;
 		if (empty($username_id)){
 			return Redirect::to('home')->with('error', 'That user does not exist.');
 		}
-		$username_id = $username_id->id;
 		$content = Input::get('post');
 		$post = new Post;
 		$post->user_id = $user_id;
@@ -37,7 +37,7 @@ class ThumbController extends BaseController
 	}
 	public function tags($tag_name)
 	{
-		$tags = Tag::where('tag','=',$tag_name)->orderBy('id', 'desc')->get();
+		$tags = Tag::where('tag','=',$tag_name)->get();
 		return View::make('tag')->with('tags', $tags)->with('tag_name',$tag_name);
 	}
 }
