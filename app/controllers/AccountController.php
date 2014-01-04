@@ -26,7 +26,8 @@ class AccountController extends BaseController
 		$edit->title = Input::get('title');
 		$edit->description = Input::get('description');
 		$edit->save();
-		return Redirect::to('profile');
+		$username = $user->username;
+		return Redirect::to("profile/$username");
 	}
 }
 

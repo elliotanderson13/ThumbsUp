@@ -29,9 +29,16 @@ class HomeController extends BaseController {
 		$posts = Post::where('id', '>', '0')->get();
 		return View::make('home', compact('posts'));
 	}
-	public function profile()
+	public function profile($username)
 	{
-		return View::make('profile');
+		$user = User::where('username', '=', $username)->first();
+		if (empty($user->id))
+		{
+			return Redirect::action('HomeController@index');
+		}
+		$user_id = $user->id;
+			return View::make('profile')
+			->with('user_id', $user_id);
 	}
 	public function login()
 	{
@@ -63,6 +70,11 @@ class HomeController extends BaseController {
 		 	$user->username = Input::get('username');
 		 	$user->activated = 1;
 		 	$user->save();
+		 	$newuser = User::where('id', '>', '0')->orderBy('id', 'desc')->first();
+		 	$user_id = $newuser->id;
+		 	$public = public_path();
+		 	mkdir("$public/img/$user_id");
+		 	copy("$public/img/image01.jpg", "$public/img/$user_id/image01.jpg");
 		 	return Redirect::to('login')->with('message', 'Thanks for registering');
 
 		 }
@@ -76,12 +88,7 @@ class HomeController extends BaseController {
 				'username'=>Input::get('username'),
 				'password'=>Input::get('password'),
 			);
-			if (Input::get('checkbox')){
-				$user = Sentry::authenticate($credentials, true);
-			}
-			else {
-				$user = Sentry::authenticate($credentials, false);
-			}
+			$user = Sentry::authenticate($credentials, false);
 			return Redirect::to('wall');
 		}
 		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
@@ -133,6 +140,15 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
 	{
 		Sentry::logout();
 		return Redirect::to('login');
+	}
+	public function names()
+	{
+		$name = $_GET['q'];
+		$names = User::where('first_name', 'like', '%$name')->where('last_name', 'like', '%name')->get();
+		foreach ($names as $name)
+		{
+			echo $name;
+		}
 	}
 
 

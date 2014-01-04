@@ -23,7 +23,7 @@ $user_id = $user->id;
 		</header>
 		<div class="post-description">
 			<p>
-				<textarea name="description" value="{{User::find($user_id)->description}}" placeholder="Description" style="width: 100%; resize: none;"></textarea>
+				<textarea name="description" placeholder="Description" style="width: 100%; resize: none;">{{User::find($user_id)->description}}</textarea>
 			</p>
 		</div>
 		{{Form::submit('Update', array('class'=>'pure-button pure-button-primary'))}}

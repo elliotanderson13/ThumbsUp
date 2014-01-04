@@ -6,6 +6,7 @@ if (!Sentry::check())
     $user = Sentry::getUser();
     $user_id = $user->id;
     $user_name = $user->first_name.' '.$user->last_name;
+    $username = $user->username;
 }
 ?>
 <!doctype html>
@@ -34,14 +35,9 @@ li > a:hover {
 
 
 
-
-
-{{HTML::style('http://yui.yahooapis.com/pure/0.3.0/pure-min.css')}}
+<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+{{HTML::style('css/style.css')}}
 {{HTML::style('css/layouts/side-menu.css')}}
-{{HTML::style('http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css')}}
-<script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
 </head>
 <body>
 
@@ -67,7 +63,7 @@ li > a:hover {
                 <li><a href="{{url('register')}}">Register</a></li>
                 @else
                 <li><a href="{{url('logout')}}">Logout</a></li>
-                <li><a href="{{action('HomeController@profile')}}">{{$user_name}}</a></li>
+                <li><a href='{{url("profile/$username")}}'>{{$user_name}}</a></li>
                 <li><a href="{{url('wall')}}">Wall</a></li>
                 <li><a href="{{url('settings')}}">Account Settings</a></li>
                 @endif
@@ -88,11 +84,7 @@ li > a:hover {
 
 
 <script src="js/ui.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-});
 
-</script>
 
 </body>
 </html>
