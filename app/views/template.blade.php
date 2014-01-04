@@ -38,6 +38,10 @@ li > a:hover {
 
 {{HTML::style('http://yui.yahooapis.com/pure/0.3.0/pure-min.css')}}
 {{HTML::style('css/layouts/side-menu.css')}}
+{{HTML::style('http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css')}}
+<script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
 </head>
 <body>
 
@@ -84,7 +88,11 @@ li > a:hover {
 
 
 <script src="js/ui.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+});
 
+</script>
 
 </body>
 </html>

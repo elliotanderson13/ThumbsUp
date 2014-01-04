@@ -63,11 +63,6 @@ class HomeController extends BaseController {
 		 	$user->username = Input::get('username');
 		 	$user->activated = 1;
 		 	$user->save();
-		 	$newuser = User::where('id', '>', '0')->orderBy('id', 'desc')->first();
-		 	$user_id = $newuser->id;
-		 	$public = public_path();
-		 	mkdir("$public/img/$user_id");
-		 	copy("$public/img/image01.jpg", "$public/img/$user_id/image01.jpg");
 		 	return Redirect::to('login')->with('message', 'Thanks for registering');
 
 		 }
@@ -81,7 +76,12 @@ class HomeController extends BaseController {
 				'username'=>Input::get('username'),
 				'password'=>Input::get('password'),
 			);
-			$user = Sentry::authenticate($credentials, false);
+			if (Input::get('checkbox')){
+				$user = Sentry::authenticate($credentials, true);
+			}
+			else {
+				$user = Sentry::authenticate($credentials, false);
+			}
 			return Redirect::to('wall');
 		}
 		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
