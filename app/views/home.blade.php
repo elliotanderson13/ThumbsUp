@@ -1,6 +1,8 @@
 @extends('template')
 @section('content')
-
+<?php
+$counter=0;
+?>
 <style type="text/css">
       .pure-menu-selected {
         border: 1px solid rgb(221, 221, 221);
@@ -85,11 +87,11 @@ $(document).ready(function() {
                 <h1 class="content-subhead">Desktop Mode</h1>
                 <div class="pure-menu pure-menu-open pure-menu-horizontal">
                 <ul>
-                <li class="pure-menu-selected" id="h"><a href="javascript:a('b')">Say Something</a></li>
-                 <li class="pure-menu-norm" id="g"><a href="javascript:a('c')">Thank Someone</a></li>  
+                <li class="pure-menu-selected" id="h"><a href="javascript:a('b')">Thank Someone</a></li>
+                 <li class="pure-menu-norm" id="g"><a href="javascript:a('c')">Say Something</a></li>  
                  </ul>
                  </div>
-                 <div id="e">
+                 <div id="f">
                   {{Form::open(array(
                     'url'=>'post',
                     'class'=>'pure-form pure-form-stacked'
@@ -101,7 +103,7 @@ $(document).ready(function() {
                 </fieldset>
                 {{Form::close()}}
                 </div>
-                <div id="f">
+                <div id="e">
                     {{Form::open(array(
                     'url'=>'thumb',
                     'class'=>'pure-form pure-form-stacked'
@@ -134,9 +136,9 @@ $(document).ready(function() {
                         <p> 
                         {{$post->content}}
                         </p>
-                                                <?php
-                                                $likes = Like::where('post_id', '=', $post->id)->get();
-                                                $counter = 0;
+                        <?php
+                            $likes = Like::where('post_id', '=', $post->id)->get();
+                            $counter = 0;
                             foreach ($likes as $count)
                             {
                                 $counter++;
@@ -207,11 +209,14 @@ $(document).ready(function() {
 
                         @endforeach
                                             {{Form::open(array(
-                        "url"=>"comment/$post->id"
+                        "url"=>"comment/$post->id", "class"=>"pure-form pure-form-inline"
                         ))}}
+                        <fieldset>
                         {{form::text('content', null, array('placeholder'=>'Comment'))}}
                         {{Form::submit('Comment', array('class'=>'pure-button pure-button-primary'))}}
+                        </fieldset>
                         {{Form::close()}}
+
                     </div>
                     @endif
 
