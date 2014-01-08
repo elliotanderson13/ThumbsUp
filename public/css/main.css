@@ -1,0 +1,52 @@
+.pure-button{
+	height: 29px;
+	font-size: 10pt;
+	border-radius: 3px;
+}
+.subsection{
+	background-color: #FFFAFA;
+	padding: 15px;
+	width: 400px;
+	border-radius: 3px;
+}
+.create{
+	position: relative;
+	width: 200px;
+	padding: 0.6em 0 0.6em 0.6em
+}
+
+.create input{
+	width: 100%;
+	padding-bottom: 10px;
+}
+
+.create label{
+	font-size: 12pt;
+	color: #999;
+	padding-bottom: 10px;
+}
+
+.left-right{
+	position: fixed;
+	left: 150px;
+	top: 0px;
+	background-color: rgb(25, 24, 24);
+	height: 100%;
+	width: 250px;
+}
+
+.left-wall{
+	padding: none;
+}
+
+.create .pure-form fieldset input[type="text"], .create .pure-form fieldset textarea{
+	background-color: #ddd;
+	-webkit-transition: all 0.10s ease-in-out;
+  	-moz-transition: all 0.10s ease-in-out;
+  	-ms-transition: all 0.10s ease-in-out;
+  	-o-transition: all 0.10s ease-in-out;
+}
+
+.create .pure-form fieldset input[type="text"]:focus, .create .pure-form fieldset textarea:focus{
+	background-color: #fff;
+}

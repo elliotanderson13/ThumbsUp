@@ -34,9 +34,10 @@ li > a:hover {
 </style>
 
 
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
 {{HTML::style('css/style.css')}}
+{{HTML::style('css/main.css')}}
 {{HTML::style('css/layouts/side-menu.css')}}
 </head>
 <body>
@@ -66,6 +67,26 @@ li > a:hover {
                 <li><a href='{{url("profile/$username")}}'>{{$user_name}}</a></li>
                 <li><a href="{{url('wall')}}">Wall</a></li>
                 <li><a href="{{url('settings')}}">Account Settings</a></li>
+                <li class="menu-item-divided">
+                <div class="create">
+                {{Form::open(array(
+                'url'=>'thumb',
+                'class'=>'pure-form pure-form-stacked left-wall'
+                ))}}
+                <fieldset>
+                    <label for="name">With Heartfelt Thanks...</label>
+                    @if(Session::has('error'))
+                    <input type="text" id="name" name="name" placeholder="Person's Username" style="border:1px solid red;" class="name" />
+                    @else
+                    <input type="text" id="name" name="name" placeholder="Person's Username" class="name" />
+                    @endif
+                    <textarea id="post" name="post" placeholder="Your Comment" style="width: 100%;resize: none; "></textarea>
+                    <input type="text" name="tags" placeholder="Tags Separated by Commas" style="width: 100%" />
+                    <input type="submit" class="pure-button pure-button-primary" value="Post" />
+                </fieldset>
+                {{Form::close()}}
+                </div>
+                </li>
                 @endif
             </ul>
         </div>

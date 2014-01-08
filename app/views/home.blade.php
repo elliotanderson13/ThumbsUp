@@ -83,9 +83,29 @@ $(document).ready(function() {
     });
 });
 </script>
+            <!--<div class="left-right">
+            <div class="create">
+                {{Form::open(array(
+                'url'=>'thumb',
+                'class'=>'pure-form pure-form-stacked'
+                ))}}
+                <fieldset>
+                    <label for="name">With Heartfelt Thanks...</label>
+                    @if(Session::has('error'))
+                    <input type="text" id="name" name="name" placeholder="Person's Username" style="border:1px solid red;" class="name" />
+                    @else
+                    <input type="text" id="name" name="name" placeholder="Person's Username" class="name" />
+                    @endif
+                    <textarea id="post" name="post" placeholder="Your Comment" style="width: 100%;resize: none; "></textarea>
+                    <input type="text" name="tags" placeholder="Tags Separated by Commas" style="width: 100%" />
+                    <input type="submit" class="pure-button pure-button-primary" value="Post" />
+                </fieldset>
+                {{Form::close()}}
+            </div>
+            </div>-->
             <div class="posts">
                 <h1 class="content-subhead">Desktop Mode</h1>
-                <div class="pure-menu pure-menu-open pure-menu-horizontal">
+                <!--<div class="pure-menu pure-menu-open pure-menu-horizontal">
                 <ul>
                 <li class="pure-menu-selected" id="h"><a href="javascript:a('b')">Thank Someone</a></li>
                  <li class="pure-menu-norm" id="g"><a href="javascript:a('c')">Say Something</a></li>  
@@ -121,7 +141,7 @@ $(document).ready(function() {
                     <input type="submit" class="pure-button pure-button-primary" value="Post" />
                 </fieldset>
                 {{Form::close()}}
-                </div>
+                </div>-->
                 <!-- A single blog post -->
                 <section class="post">
 
@@ -132,10 +152,11 @@ $(document).ready(function() {
                         <h2 class="post-title">Post By {{User::find($post->user_id)->first_name.' '.User::find($post->user_id)->last_name}}
                         </h2>
                     </header>
-                    <div class="post-description">
-                        <p> 
+                    <div class="post-description" style="padding-left: 90px;">
+                        <p>
                         {{$post->content}}
                         </p>
+                        <div class="subsection">
                         <?php
                             $likes = Like::where('post_id', '=', $post->id)->get();
                             $counter = 0;
@@ -149,25 +170,28 @@ $(document).ready(function() {
                         <small><a href='{{url("like/$post->id")}}'>Like</a></small>
                         @else
                         <small>You liked this!&nbsp;&nbsp;&nbsp; {{$counter.' like(s)'}}</small>
-                                                <?php
+                        <?php
                             $comments = Comment::where('post_id', '=', $post->id)->get();
                         ?>
+                        
                         @foreach($comments as $comment)
                         <?php $username = User::find($post->user_id)->username;?>
                         <header class="post-header">
                         <img class="post-avatar" alt="{{User::find($comment->user_id)->first_name}}" height="24" width="24" src="img/{{$comment->user_id}}/image01.jpg" style="float: left;margin-right:20px;">
                         <small><a href='{{url("profile/$username")}}'>{{User::find($comment->user_id)->first_name.' '.User::find($comment->user_id)->last_name}}</a> {{$comment->content}}</small>
-                    </header>
+                        </header>
 
                         @endforeach
                          {{Form::open(array(
-                        "url"=>"comment/$post->id"
+                        "url"=>"comment/$post->id", "class"=>"pure-form pure-form-inline"
                         ))}}
+                        <fieldset>
                         {{form::text('content', null, array('placeholder'=>'Comment'))}}
                         {{Form::submit('Comment', array('class'=>'pure-button pure-button-primary'))}}
+                        </fieldset>
                         {{Form::close()}}
                         @endif
-
+                        </div>
                     </div>
                     @else 
 
@@ -192,6 +216,7 @@ $(document).ready(function() {
                         <?php
                             $like = Like::where('post_id', '=', $post->id)->where('user_id', '=', Sentry::getUser()->id)->first();
                         ?>
+                        <div class="subsection">
                         @if(empty($like->id))
                         <small><a href='{{url("like/$post->id")}}'>Like</a></small>
                         @else
@@ -200,6 +225,7 @@ $(document).ready(function() {
                         <?php
                             $comments = Comment::where('post_id', '=', $post->id)->get();
                         ?>
+                        
                         @foreach($comments as $comment)
                         <?php $username = User::find($post->user_id)->username;?>
                         <header class="post-header">
@@ -216,7 +242,7 @@ $(document).ready(function() {
                         {{Form::submit('Comment', array('class'=>'pure-button pure-button-primary'))}}
                         </fieldset>
                         {{Form::close()}}
-
+                        </div>
                     </div>
                     @endif
 

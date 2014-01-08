@@ -68,7 +68,7 @@ the menu have 100% height and be fixed on the page as the rest of it scrolls.
 */
 #menu {
     margin-left: -150px; /* this should be "#menu" width */
-    width: 150px;
+    width: 220px;
     position: fixed;
     top: 0;
     left: 150px; /* this should be "#menu" width */
