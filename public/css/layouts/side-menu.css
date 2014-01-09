@@ -2,6 +2,15 @@ body {
     color: #777;
 }
 
+/* 
+
+BOSTON HEART THEME
+
+Red: rgb(138, 9, 26);
+Blue: rgb(0, 58, 121);
+Green: rgb(83, 152, 70);
+
+
 /*
 Add transition to containers so they can push in and out.
 */
@@ -68,7 +77,7 @@ the menu have 100% height and be fixed on the page as the rest of it scrolls.
 */
 #menu {
     margin-left: -150px; /* this should be "#menu" width */
-    width: 220px;
+    width: 235px;
     position: fixed;
     top: 0;
     left: 150px; /* this should be "#menu" width */
@@ -116,7 +125,7 @@ the menu have 100% height and be fixed on the page as the rest of it scrolls.
     */
     #menu .pure-menu-selected,
     #menu .pure-menu-heading {
-        background: #1f8dd6;
+        background: rgb(138, 9, 26);
     }
         /*
         This styles a link within a selected menu item `<li>`.
@@ -232,7 +241,7 @@ small screens.
     font-size: 80%;
 }
     .post-category-design {
-        background: #5aba59;
+        background: rgb(83, 152, 70);
     }
     .post-category-pure {
         background: #4d85d1;

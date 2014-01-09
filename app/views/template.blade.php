@@ -56,7 +56,7 @@ li > a:hover {
 
     <div id="menu">
         <div class="pure-menu pure-menu-open">
-            <a class="pure-menu-heading" href="wall">Thumbs Up</a>
+            <a class="pure-menu-heading" href="wall">with heartfelt thanks</a>
 
             <ul>
                 @if(!Sentry::check())
@@ -64,8 +64,8 @@ li > a:hover {
                 <li><a href="{{url('register')}}">Register</a></li>
                 @else
                 <li><a href="{{url('logout')}}">Logout</a></li>
-                <li><a href='{{url("profile/$username")}}'>{{$user_name}}</a></li>
                 <li><a href="{{url('wall')}}">Wall</a></li>
+                <li><a href='{{url("profile/$username")}}'>{{$user_name}}</a></li>
                 <li><a href="{{url('settings')}}">Account Settings</a></li>
                 <li class="menu-item-divided">
                 <div class="create">
@@ -74,13 +74,13 @@ li > a:hover {
                 'class'=>'pure-form pure-form-stacked left-wall'
                 ))}}
                 <fieldset>
-                    <label for="name">With Heartfelt Thanks...</label>
+                    <label for="name">With Heartfelt Thanks</label>
                     @if(Session::has('error'))
-                    <input type="text" id="name" name="name" placeholder="Person's Username" style="border:1px solid red;" class="name" />
+                    <input type="text" id="name" name="name" placeholder="Name" style="border:1px solid red;" class="name" />
                     @else
-                    <input type="text" id="name" name="name" placeholder="Person's Username" class="name" />
+                    <input type="text" id="name" name="name" placeholder="Name" class="name" />
                     @endif
-                    <textarea id="post" name="post" placeholder="Your Comment" style="width: 100%;resize: none; "></textarea>
+                    <textarea id="post" name="post" placeholder="Comment" style="width: 100%;resize: none; "></textarea>
                     <input type="text" name="tags" placeholder="Tags Separated by Commas" style="width: 100%" />
                     <input type="submit" class="pure-button pure-button-primary" value="Post" />
                 </fieldset>

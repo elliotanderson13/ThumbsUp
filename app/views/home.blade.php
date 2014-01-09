@@ -69,7 +69,7 @@ $(document).ready(function() {
             });
         } return false;
     }
-    $("input#search").live("keyup", function(e) {
+    $("#name").live("keyup", function(e) {
         clearTimeout($.data(this, 'timer'));
         var search_string = $(this).val();
         if (search_string == '') {

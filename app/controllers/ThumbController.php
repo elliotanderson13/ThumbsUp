@@ -10,8 +10,9 @@ class ThumbController extends BaseController
 	{	
 		$user = Sentry::getUser();
 		$user_id  = $user->id;
-		$username = Input::get('name');
-		$username_id = User::where('username', '=', $username)->first();
+		$fullname = Input::get('name');
+		$fullnamearr = explode(" ", $fullname);
+		$username_id = User::where('first_name', $fullnamearr[0])->where('last_name', $fullnamearr[1])->first();
 		if (empty($username_id)){
 			return Redirect::to('home')->with('error', 'That user does not exist.');
 		}
