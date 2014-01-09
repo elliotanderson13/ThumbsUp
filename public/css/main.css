@@ -54,6 +54,10 @@ input[type="submit"]{
 	background-color: rgb(138, 9, 26);
 }
 
+.create .pure-form fieldset input[type="text"], .create .pure-form fieldset textarea{
+	background-color: #ddd;
+}
+
 .create .pure-form fieldset input[type="text"]:focus, .create .pure-form fieldset textarea:focus{
 	background-color: #fff;
 }
