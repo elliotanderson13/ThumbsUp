@@ -3,6 +3,7 @@
 <?php
 $counter=0;
 ?>
+<title>With Heartfelt Thanks</title>
 <style type="text/css">
       .pure-menu-selected {
         border: 1px solid rgb(221, 221, 221);

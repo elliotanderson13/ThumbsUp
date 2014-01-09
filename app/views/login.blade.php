@@ -1,5 +1,6 @@
 @extends('template')
 @section('content')
+<title>Log In</title>
 <div class="posts">
 	<h1 class="content-subhead">Log In</h1>
 	<section class="post">
