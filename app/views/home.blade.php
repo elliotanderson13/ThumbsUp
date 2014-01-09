@@ -198,15 +198,15 @@ $(document).ready(function() {
                     <header class="post-header">
                         <img class="post-avatar" alt="{{User::find($post->user_id)->first_name}}" height="48" width="48" src="img/{{$post->user_id}}/image01.jpg" style="float:left; margin-right: 20px;">
 
-                        <h2 class="post-title">Thumbs Up to {{User::find($post->to_id)->first_name.' '.User::find($post->to_id)->last_name}}</h2>
+                        <h2 class="post-title">{{User::find($post->to_id)->first_name.' '.User::find($post->to_id)->last_name}}, Thank You!</h2>
 
-                        <p class="post-meta">
-                            From <a href="#" class="post-author">{{User::find($post->user_id)->first_name.' '.User::find($post->user_id)->last_name}}</a> 
+                        <span class="post-meta" style="padding-lefp:200px;">
+                            &nbsp;&nbsp;From <a href='{{url("profile/$post->user_id")}}' class="post-author">{{User::find($post->user_id)->first_name.' '.User::find($post->user_id)->last_name}}</a> 
                             with values
                             @foreach(Tag::where('thumb_id', '=', $post->id)->get() as $tag)
                              <a class="post-category post-category-design" href="tag/{{$tag->tag}}">{{$tag->tag}}</a> 
                              @endforeach
-                        </p>
+                        </span>
                     </header>
 
                     <div class="post-description" style="padding-left: 90px;">
@@ -218,7 +218,7 @@ $(document).ready(function() {
                         ?>
                         <div class="subsection">
                         @if(empty($like->id))
-                        <small><a href='{{url("like/$post->id")}}'>Like</a></small>
+                        <!--<small><a href='{{url("like/$post->id")}}'>Like</a></small>-->
                         @else
                         <small>You liked this!&nbsp;&nbsp;&nbsp; {{$counter.' like(s)'}}</small>
                         @endif
@@ -229,9 +229,11 @@ $(document).ready(function() {
                         @foreach($comments as $comment)
                         <?php $username = User::find($post->user_id)->username;?>
                         <header class="post-header">
-                        <img class="post-avatar" alt="{{User::find($comment->user_id)->first_name}}" height="24" width="24" src="img/{{$comment->user_id}}/image01.jpg" style="float: left;margin-right:20px;">
-                        <small><a href='{{url("profile/$username")}}'>{{User::find($comment->user_id)->first_name.' '.User::find($comment->user_id)->last_name}}</a> {{$comment->content}}</small>
-                    </header>
+                            <div>
+                                <!--<img class="post-avatar" alt="{{User::find($comment->user_id)->first_name}}" height="24" width="24" src="img/{{$comment->user_id}}/image01.jpg" style="float: left;margin-right:10px;vertical-align:middle">
+                                --><small><a href='{{url("profile/$comment->user_id")}}'>{{User::find($comment->user_id)->first_name.' '.User::find($comment->user_id)->last_name}}</a> {{$comment->content}}</small>
+                            </div>
+                        </header>
 
                         @endforeach
                                             {{Form::open(array(

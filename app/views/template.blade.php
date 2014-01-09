@@ -25,7 +25,7 @@ if (!Sentry::check())
     font-family: thumbs;
     src: url("{{url('css/thumbs.otf')}}");
 }
-body {
+body *{
     font-family: thumbs;
 }
 li > a:hover {
@@ -63,10 +63,10 @@ li > a:hover {
                 <li><a href="{{url('login')}}">Login</a></li>
                 <li><a href="{{url('register')}}">Register</a></li>
                 @else
-                <li><a href="{{url('logout')}}">Logout</a></li>
                 <li><a href="{{url('wall')}}">Wall</a></li>
                 <li><a href='{{url("profile/$username")}}'>{{$user_name}}</a></li>
                 <li><a href="{{url('settings')}}">Account Settings</a></li>
+                <li><a href="{{url('logout')}}">Logout</a></li>
                 <li class="menu-item-divided">
                 <div class="create">
                 {{Form::open(array(
