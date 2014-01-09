@@ -3,7 +3,7 @@
 <?php
 $counter=0;
 ?>
-<title>With Heartfelt Thanks</title>
+
 <style type="text/css">
       .pure-menu-selected {
         border: 1px solid rgb(221, 221, 221);
@@ -221,7 +221,7 @@ $(document).ready(function() {
                         @if(empty($like->id))
                         <!--<small><a href='{{url("like/$post->id")}}'>Like</a></small>-->
                         @else
-                        <small>You liked this!&nbsp;&nbsp;&nbsp; {{$counter.' like(s)'}}</small>
+                        <!--<small>You liked this!&nbsp;&nbsp;&nbsp; {{$counter.' like(s)'}}</small>-->
                         @endif
                         <?php
                             $comments = Comment::where('post_id', '=', $post->id)->get();
