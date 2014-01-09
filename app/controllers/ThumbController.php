@@ -40,6 +40,11 @@ class ThumbController extends BaseController
 	public function tags($tag_name)
 	{
 		$tags = Tag::where('tag','=',$tag_name)->orderBy('id', 'desc')->get();
+		$tag = Tag::where('tag', '=', $tag_name)->first();
+		if (empty($tag->tag))
+		{
+		    return Redirect::back();
+		}
 		return View::make('tag')->with('tags', $tags)->with('tag_name',$tag_name);
 	}
 }
