@@ -73,9 +73,9 @@ li > a:hover {
                 <fieldset>
                     <label for="name">With Heartfelt Thanks</label>
                     @if(Session::has('error'))
-                    <input type="text" id="name-search" name="name" placeholder="Name" style="border:1px solid red;" class="name" />
+                    <input type="text" id="name-search" name="name" placeholder="Name" autocomplete="off" style="border:1px solid red;" class="name" />
                     @else
-                    <input type="text" id="name-search" name="name" placeholder="Name" class="name" />
+                    <input type="text" id="name-search" name="name" placeholder="Name" autocomplete="off" class="name" />
                     @endif
                     <div class="suggestions">
                     </div>
