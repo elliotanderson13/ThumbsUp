@@ -70,7 +70,7 @@ $(document).ready(function() {
             });
         } return false;
     }
-    $("#name").live("keyup", function(e) {
+    /*$("#name").live("keyup", function(e) {
         clearTimeout($.data(this, 'timer'));
         var search_string = $(this).val();
         if (search_string == '') {
@@ -81,7 +81,7 @@ $(document).ready(function() {
             $("h4#results-text").fadeIn();
             $(this).data('timer', setTimeout(search,100));
         };
-    });
+    });*/
 });
 </script>
             <!--<div class="left-right">
