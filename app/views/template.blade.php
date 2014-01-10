@@ -75,7 +75,7 @@ li > a:hover {
                     @if(Session::has('error'))
                     <input type="text" id="name-search" name="name" placeholder="Name" style="border:1px solid red;" class="name" />
                     @else
-                    <input type="text" id="name" name="name" placeholder="Name" class="name" />
+                    <input type="text" id="name-search" name="name" placeholder="Name" class="name" />
                     @endif
                     <div class="suggestions">
                         <div>
@@ -117,9 +117,27 @@ li > a:hover {
 
 <script src="js/ui.js"></script>
 <script type="text/javascript">
-$('#name-search').keyup(function(){
-
+$(document).ready(function(){
+    $('#name-search').keyup(function(){
+        search();
+    });
+    function search() {
+        var query_value = $('#name-search').val();
+        if (query_value !== ''){
+            $.ajax({
+                type: "GET",
+                url: "{{url('getnames')}}",
+                data: {q: query_value},
+                cache: false,
+                success: function(html){
+                    //alert(html);
+                    $(".suggestions").html(html);
+                }
+            });
+        } return false;
+    }
 });
+
 </script>
 
 

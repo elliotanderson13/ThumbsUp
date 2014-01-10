@@ -143,11 +143,21 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
 	}
 	public function names()
 	{
-		$name = $_GET['q'];
-		$names = User::where('first_name', 'like', '%$name')->where('last_name', 'like', '%name')->get();
-		foreach ($names as $name)
-		{
-			echo $name;
+		if (isset($_GET['q'])) {
+			$name = $_GET['q'];
+			$fullname = explode(' ', $name);
+			$firstname = $fullname[0];
+			if (isset($fullname[1])) {
+				$lastname = $fullname[1];
+				$names = User::where('first_name', 'LIKE', '%'.$firstname.'%')->where('last_name', 'like', '%'.$lastname.'%')->get();
+			}
+			else{
+				$names = User::where('first_name', 'LIKE', '%'.$firstname.'%')->get();
+			}
+			foreach ($names as $name)
+			{
+				echo '<div><img src="img/'.$name->id.'/image01.jpg" class="post-avatar" height="30" width="30"><span>'.$name->first_name.' '.$name->last_name.'</span></div>';
+			}
 		}
 	}
 

@@ -55,7 +55,7 @@ $(document).ready(function() {
         $('input#name').focus();
     });
 
-    function search() {
+    /*function search() {
         var query_value = $('input#name').val();
         $('b#search-string').html(query_value);
         if (query_value !== ''){
@@ -69,7 +69,7 @@ $(document).ready(function() {
                 }
             });
         } return false;
-    }
+    }*/
     /*$("#name").live("keyup", function(e) {
         clearTimeout($.data(this, 'timer'));
         var search_string = $(this).val();
