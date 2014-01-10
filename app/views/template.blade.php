@@ -78,18 +78,6 @@ li > a:hover {
                     <input type="text" id="name-search" name="name" placeholder="Name" class="name" />
                     @endif
                     <div class="suggestions">
-                        <div>
-                            <img class="post-avatar" height="30" width="30" src="img/image01.jpg">
-                            <span>Rick Ross</span>
-                        </div>
-                        <div>
-                            <img class="post-avatar" height="30" width="30" src="img/image01.jpg">
-                            <span>James Pickering</span>
-                        </div>
-                        <div>
-                            <img class="post-avatar" height="30" width="30" src="img/image01.jpg">
-                            <span>Cherie Lucier</span>
-                        </div>
                     </div>
                     <textarea id="post" name="post" placeholder="Comment" style="width: 100%;resize: none; "></textarea>
                     <input type="text" name="tags" placeholder="Tags Separated by Commas" style="width: 100%" />
@@ -120,6 +108,9 @@ li > a:hover {
 $(document).ready(function(){
     $('#name-search').keyup(function(){
         search();
+    });
+    $('.suggestions div').click(function(){
+        $('.#name-search').val($(this+'span').val());
     });
     function search() {
         var query_value = $('#name-search').val();
