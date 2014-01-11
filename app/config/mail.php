@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'test@chaunz.com', 'name' => 'With Heartfelt Thanks'),
+	'from' => array('address' => 'jllpickering@gmail.com', 'name' => 'With Heartfelt Thanks'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'jllpickering@gmail.com',
+	'username' => 'jllpickering',
 
 	/*
 	|--------------------------------------------------------------------------
