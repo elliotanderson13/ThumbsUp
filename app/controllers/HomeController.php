@@ -29,6 +29,11 @@ class HomeController extends BaseController {
 		$posts = Post::where('id', '>', '0')->get();
 		return View::make('home', compact('posts'));
 	}
+	public function tvMode()
+	{
+		$posts = Post::where('id', '>', '0')->get();
+		return View::make('tv', compact('posts'));
+	}
 	public function profile($username)
 	{
 		$user = User::where('username', '=', $username)->first();
@@ -156,7 +161,7 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
 			}
 			foreach ($names as $name)
 			{
-				echo '<div><img src="img/'.$name->id.'/image01.jpg" class="post-avatar" height="30" width="30"><span>'.$name->first_name.' '.$name->last_name.'</span></div>';
+				echo '<div class="drop" id="'.$name->id.'"><img src="img/'.$name->id.'/image01.jpg" class="post-avatar" height="30" width="30"><span>'.$name->first_name.' '.$name->last_name.'</span></div>';
 			}
 		}
 	}

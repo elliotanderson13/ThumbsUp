@@ -28,6 +28,9 @@ body *{
 li > a:hover {
     text-decoration: none;
 }
+#name-search:focus ~ .suggestions{
+    display: block;
+}
 </style>
 
 
@@ -64,8 +67,12 @@ li > a:hover {
                 <li><a href='{{url("profile/$username")}}'>{{$user_name}}</a></li>
                 <li><a href="{{url('settings')}}">Account Settings</a></li>
                 <li><a href="{{url('logout')}}">Logout</a></li>
+                <li><a href="{{url('tv')}}">TV Mode</a></li>
                 <li class="menu-item-divided">
                 <div class="create">
+                <script type="text/javascript">
+
+                </script>
                 {{Form::open(array(
                 'url'=>'thumb',
                 'class'=>'pure-form pure-form-stacked left-wall'
@@ -73,9 +80,9 @@ li > a:hover {
                 <fieldset>
                     <label for="name">With Heartfelt Thanks</label>
                     @if(Session::has('error'))
-                    <input type="text" id="name-search" name="name" placeholder="Name" autocomplete="off" style="border:1px solid red;" class="name" />
+                    <input type="text" id="name-search" onBlur="javascript:unfocus()" name="name" placeholder="Name" autocomplete="off" style="border:1px solid red;" class="name" />
                     @else
-                    <input type="text" id="name-search" name="name" placeholder="Name" autocomplete="off" class="name" />
+                    <input type="text" id="name-search" onBlur="javascript:unfocus()" name="name" placeholder="Name" autocomplete="off" class="name" />
                     @endif
                     <div class="suggestions">
                     </div>
@@ -105,13 +112,27 @@ li > a:hover {
 
 <script src="js/ui.js"></script>
 <script type="text/javascript">
+function unfocus(){
+    if ($('.suggestions:hover').length != 0) {$('#name-search').focus()}
+    else{
+        $(".suggestions").css("display", "none");
+    };
+};
+$('.suggestions').click(function(){
+    $('#name-search').val($('.suggestions div:hover span').html());
+    $(".suggestions").css("display", "none");
+    $('#name-search').blur();
+});
 $(document).ready(function(){
+    
+
     $('#name-search').keyup(function(){
         search();
     });
-    $('.suggestions div').click(function(){
-        $('.#name-search').val($(this+'span').val());
-    });
+    $('#name-search').focus(function(){
+        $(".suggestions").css("display", "block");
+    })
+    
     function search() {
         var query_value = $('#name-search').val();
         if (query_value !== ''){

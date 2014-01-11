@@ -12,12 +12,23 @@ class ThumbController extends BaseController
 		$user_id  = $user->id;
 		$fullname = Input::get('name');
 		$fullnamearr = explode(" ", $fullname);
-		$username_id = User::where('first_name', $fullnamearr[0])->where('last_name', $fullnamearr[1])->first();
-		if (empty($username_id)){
+		if (!isset($fullnamearr[1])) {
 			return Redirect::to('home')->with('error', 'That user does not exist.');
 		}
-		$username_id = $username_id->id;
+		$username_id = User::where('first_name', $fullnamearr[0])->where('last_name', $fullnamearr[1])->first();
+		if (empty($username_id->id)){
+			return Redirect::to('home')->with('error', 'That user does not exist.');
+		}
 		$content = Input::get('post');
+		$email = $username_id->email;
+		$name = $fullnamearr[0].' '.$fullnamearr[1];
+		$data = array('name'=>$name, 'poster'=>$user->first_name.' '.$user->last_name);
+		Mail::send('email', $data, function($message) use($email, $name)
+		{
+		    $message->to($email, $name)->subject('With Heartfelt Thanks');
+		});
+		$username_id = $username_id->id;
+		
 		$post = new Post;
 		$post->user_id = $user_id;
 		$post->to_id = $username_id;
@@ -47,4 +58,5 @@ class ThumbController extends BaseController
 		}
 		return View::make('tag')->with('tags', $tags)->with('tag_name',$tag_name);
 	}
+
 }

@@ -20,7 +20,7 @@ Route::get('/login', 'HomeController@login');
 
 Route::group(array('before'=>'auth'), function()
 {
-	Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 Route::get('/profile', 'HomeController@profile');
 Route::get('/wall', 'HomeController@index');
 Route::get('/logout', 'HomeController@logout');
@@ -42,6 +42,7 @@ Route::get('admin/home', 'AdminController@home');
 Route::get('remove/{user_id}', 'AdminController@remove');
 Route::get('edit/{user_id}', 'AdminController@edit');
 Route::get('admin/confirm/{user_id}', 'AdminController@confirmRemove');
+Route::get('tv', 'HomeController@tvMode');
 });
 
 
