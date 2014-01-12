@@ -10,7 +10,8 @@ class AdminController extends BaseController
 		$password = Input::get('password');
 		if ($password == "bostonheartdiag")
 		{
-			return Redirect::action("AdminController@home");
+			$posts = Post::where('id', '>', '0')->orderBy('id', 'desc')->get();
+			return Redirect::action("AdminController@home", compact('posts'));
 		}
 		return Redirect::back();
 	}
@@ -20,15 +21,16 @@ class AdminController extends BaseController
 		return View::make('Admin.home')
 		->with('users', $users);	
 	}
-	public function remove($user_id)
+	public function remove($post_id)
 	{
-		$user = User::find($user_id);
+		$post = Post::find($post_id);
 		return View::make('Admin.remove')
-		->with('user', $user);
+		->with('post', $post);
 	}
-	public function confirmRemove($user_id)
+	public function confirmRemove($post_id)
 	{
-		$user = User::find($user_id);
-		return 'put delete stuff here';
+		$post = Post::find($post_id);
+		$post->delete();
+		return View::make('Admin.home');
 	}
 }

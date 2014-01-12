@@ -48,7 +48,7 @@
 				<form action="{{action('AdminController@handleForm')}}" method="POST">
 				<center>
 				<input type="password" name="password" placeholder="Admin Password" class="form-control" style="width: 300px;" />
-				<input type="submit" class="btn btn-info" style="width:300px;" />
+				<input type="submit" class="btn btn-info" style="width:300px;" value="Go" />
 				</center>
 				</form>
 			</div>

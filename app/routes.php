@@ -39,9 +39,9 @@ Route::post('comment/{post_id}', 'SocialController@comment');
 Route::get('/profile/{username}', 'HomeController@profile');
 Route::post('admin', 'AdminController@handleForm');
 Route::get('admin/home', 'AdminController@home');
-Route::get('remove/{user_id}', 'AdminController@remove');
+Route::get('remove/{post_id}', 'AdminController@remove');
 Route::get('edit/{user_id}', 'AdminController@edit');
-Route::get('admin/confirm/{user_id}', 'AdminController@confirmRemove');
+Route::get('admin/confirm/{post_id}', 'AdminController@confirmRemove');
 Route::get('tv', 'HomeController@tvMode');
 });
 

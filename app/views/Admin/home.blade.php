@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php $posts = Post::where('id', '>', '0')->orderBy('id', 'desc')->get(); ?>
 <html lang="en">
 	<head>
 		<title>Admin Panel Home</title>
@@ -11,25 +12,28 @@
 				<table id="sorted-table" class="table table-striped main-table">
 					<thead>
 						<tr>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Username</th>
-							<th>Email</th>
-							<th>Job Title</th>
-							<th>Description</th>
+							<th>From</th>
+							<th>To</th>
+							<th>Content</th>
+							<th>Created At</th>
 							<th>Options</th>
 						</tr>
 					</thead>
 					<tbody>
-						@foreach($users as $user)
+
+						@foreach($posts as $post)
+						<?php 
+						$from = User::where('id', $post->user_id)->first();
+						$fromname = $from->first_name.' '.$from->last_name;
+						$to = User::where('id', $post->to_id)->first();
+						$toname = $to->first_name.' '.$to->last_name;
+						?>
 						<tr>
-							<td>{{$user->first_name}}</td>
-							<td>{{$user->last_name}}</td>
-							<td>{{$user->username}}</td>
-							<td>{{$user->email}}</td>
-							<td>{{$user->title}}</td>
-							<td>{{$user->description}}</td>
-							<td><a href='{{url("remove/$user->id")}}' class="btn btn-danger">Delete</a></td>
+							<td>{{$fromname}}</td>
+							<td>{{$toname}}</td>
+							<td>{{$post->content}}</td>
+							<td>{{$post->created_at}}</td>
+							<td><a href='{{ url("/remove/$post->id")}}' class="btn btn-danger">Delete</a></td>
 						</tr>
 						@endforeach
 					</tbody>
