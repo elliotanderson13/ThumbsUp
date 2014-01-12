@@ -93,7 +93,7 @@ class HomeController extends BaseController {
 				'username'=>Input::get('username'),
 				'password'=>Input::get('password'),
 			);
-			$user = Sentry::authenticate($credentials, false);
+			$user = Sentry::authenticate($credentials, true);
 			return Redirect::to('wall');
 		}
 		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
