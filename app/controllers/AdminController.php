@@ -30,7 +30,20 @@ class AdminController extends BaseController
 	public function confirmRemove($post_id)
 	{
 		$post = Post::find($post_id);
+		$tags = Tag::where('thumb_id', $post_id)->get();
+		$comments = Comment::where('post_id', $post_id)->get();
+		if (!isset($post->id)) {
+			$posts = Post::where('id', '>', '0')->orderBy('id', 'desc')->get();
+			return Redirect::action("AdminController@home", compact('posts'));
+		}
+		foreach ($tags as $tag) {
+			$tag->delete();
+		}
+		foreach ($comments as $comment) {
+			$comment->delete();
+		}
 		$post->delete();
-		return View::make('Admin.home');
+		$posts = Post::where('id', '>', '0')->orderBy('id', 'desc')->get();
+		return Redirect::action("AdminController@home", compact('posts'));
 	}
 }
