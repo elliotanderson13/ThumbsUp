@@ -31,7 +31,7 @@ class HomeController extends BaseController {
 	}
 	public function tvMode()
 	{
-		$posts = Post::where('id', '>', '0')->get();
+		$posts = Post::where('id', '>', '0')->orderBy('id', 'desc')->get();
 		return View::make('tv', compact('posts'));
 	}
 	public function profile($username)
@@ -42,8 +42,9 @@ class HomeController extends BaseController {
 			return Redirect::action('HomeController@index');
 		}
 		$user_id = $user->id;
-			return View::make('profile')
-			->with('user_id', $user_id);
+		$posts = Post::where('id', '>', '0')->get();
+		return View::make('profile', compact('posts'))
+		->with('user_id', $user_id);
 	}
 	public function login()
 	{

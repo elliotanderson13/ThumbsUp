@@ -6,9 +6,10 @@ body {
 
 BOSTON HEART THEME
 
-Red: rgb(138, 9, 26);
-Blue: rgb(0, 58, 121);
-Green: rgb(83, 152, 70);
+Red: #843549;
+Blue: #003E74;
+Green: #6C953C;
+Black: #A49791;
 
 
 /*
@@ -83,7 +84,7 @@ the menu have 100% height and be fixed on the page as the rest of it scrolls.
     left: 150px; /* this should be "#menu" width */
     bottom: 0;
     z-index: 1; /* so the menu or its navicon stays above all content */
-    background: #191818;
+    background: #A49791;
     overflow-y: auto;
     -webkit-overflow-scroll: touch; /* for smooth scrolling on mobile */
 }
@@ -91,7 +92,7 @@ the menu have 100% height and be fixed on the page as the rest of it scrolls.
     All anchors inside the menu should be styled like this.
     */
     #menu a {
-        color: #999;
+        color: #FFF;
         border: none;
         padding: 0.6em 0 0.6em 0.6em;
     }
@@ -110,14 +111,14 @@ the menu have 100% height and be fixed on the page as the rest of it scrolls.
     */
     #menu .pure-menu ul,
     #menu .pure-menu .menu-item-divided {
-        border-top: 1px solid #333;
+        border-top: 1px solid #938680;
     }
         /*
         Change color of the anchor links on hover/focus.
         */
         #menu .pure-menu li a:hover,
         #menu .pure-menu li a:focus {
-            background: #333;
+            background: #938680;
         }
 
     /*
@@ -125,7 +126,7 @@ the menu have 100% height and be fixed on the page as the rest of it scrolls.
     */
     #menu .pure-menu-selected,
     #menu .pure-menu-heading {
-        background: rgb(138, 9, 26);
+        background: #843549;
     }
         /*
         This styles a link within a selected menu item `<li>`.
@@ -241,7 +242,7 @@ small screens.
     font-size: 80%;
 }
     .post-category-design {
-        background: rgb(83, 152, 70);
+        background: #6C953C;
     }
     .post-category-pure {
         background: #4d85d1;

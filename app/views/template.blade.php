@@ -99,7 +99,7 @@ li > a:hover {
     </div>
 
     <div id="main">
-
+        <div class="banner"><span>WITH HEARTFELT THANKS</span></div>
         <div class="content">
         @yield('content')
 

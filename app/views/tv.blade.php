@@ -13,7 +13,7 @@ $counter=0;
 .tvback{
     position: fixed;
     left: 15px;
-    top: 15px;
+    top: 62px;
     text-decoration: none;
     color: rgb(0, 51, 123);
     opacity: 0.2;
@@ -128,7 +128,7 @@ $counter=0;
                             with values
                             @foreach(Tag::where('thumb_id', '=', $post->id)->get() as $tag)
                              <a class="post-category post-category-design" href="tag/{{$tag->tag}}">{{$tag->tag}}</a> 
-                             @endforeach
+                            @endforeach
                         </span>
                     </header>
 
@@ -139,15 +139,18 @@ $counter=0;
                         <?php
                             $like = Like::where('post_id', '=', $post->id)->where('user_id', '=', Sentry::getUser()->id)->first();
                         ?>
+                        <?php
+                            $comments = Comment::where('post_id', '=', $post->id)->get();
+                            $fc = Comment::where('post_id', '=', $post->id)->first();
+                        ?>
+                        @if(!empty($fc->id))
                         <div class="subsection">
                         @if(empty($like->id))
                         <!--<small><a href='{{url("like/$post->id")}}'>Like</a></small>-->
                         @else
                         <!--<small>You liked this!&nbsp;&nbsp;&nbsp; {{$counter.' like(s)'}}</small>-->
                         @endif
-                        <?php
-                            $comments = Comment::where('post_id', '=', $post->id)->get();
-                        ?>
+                        
                         
                         @foreach($comments as $comment)
                         <?php $username = User::find($post->user_id)->username;?>
@@ -168,6 +171,7 @@ $counter=0;
                         </fieldset>
                         {{Form::close()}}-->
                         </div>
+                        @endif
                     </div>
                     @endif
 
