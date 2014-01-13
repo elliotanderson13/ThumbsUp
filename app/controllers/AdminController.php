@@ -49,16 +49,15 @@ class AdminController extends BaseController
 	public function export(){
 		$posts = Post::where('id', '>', '0')->orderBy('id', 'desc')->get();
 		$data = array(
-			array('From'),
+			array('To', 'From', 'Content', 'Created At'),
 		);
 		foreach ($posts as $post) {
 			$user = User::where('id', '=', $post->user_id)->first();
-			array_push($data, array($user->first_name.' '.$user->last_name));
+			$to = User::where('id', '=', $post->to_id)->first();
+			array_push($data, array($to->first_name.' '.$to->last_name, $user->first_name.' '.$user->last_name, $post->content, '$post->created_at'));
 		}
-		print_r($data);
-		dd('die');
-		Excel::create('ExcelName')
-        ->sheet('SheetName')
+		Excel::create('Posts')
+        ->sheet('Sheet 1')
             ->with($data)
         ->export('xls');
         //Export::createExport($posts);
