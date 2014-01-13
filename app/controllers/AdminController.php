@@ -49,18 +49,17 @@ class AdminController extends BaseController
 	public function export(){
 		$posts = Post::where('id', '>', '0')->orderBy('id', 'desc')->get();
 		$data = array(
-			array('To', 'From', 'Content', 'Created At'),
+			'h1'=>array('To', 'From', 'Content', 'Created At'),
 		);
 		foreach ($posts as $post) {
 			$user = User::where('id', '=', $post->user_id)->first();
 			$to = User::where('id', '=', $post->to_id)->first();
 			array_push($data, array($to->first_name.' '.$to->last_name, $user->first_name.' '.$user->last_name, $post->content, '$post->created_at'));
 		}
-		Excel::create('Posts')
-        ->sheet('Sheet 1')
-            ->with($data)
-        ->export('xls');
-        //Export::createExport($posts);
+		Excel::loadView('Admin.excel', array())
+		->setTitle('Posts')
+		->sheet('Sheet 1')
+		->export('xls');
 
 		return Redirect::action("AdminController@home", compact('posts'));
 	}
