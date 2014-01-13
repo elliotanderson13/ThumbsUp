@@ -6,7 +6,9 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"cartalyst/sentry":"2.0.*",
-		"export/excel-bundle": "dev-master"
+		"export/excel-bundle": "dev-master",
+		"maatwebsite/excel": "dev-master",
+		"wisembly/excelant": "*"
 	},
 	"autoload": {
 		"classmap": [

@@ -52,13 +52,15 @@ input[type="submit"]{
 	left: 0px;
 	z-index: 2;
 	text-align: center;
-	font-size: 14pt;
-	height: 47px;
+	font-size: 18pt;
+	height: 65px;
 	vertical-align: middle;
 }
 
 .banner span{
-	line-height: 47px;
+	line-height: 65px;
+	text-transform: lowercase;
+
 }
 
 .pure-form fieldset input[type="text"], .pure-form fieldset textarea{

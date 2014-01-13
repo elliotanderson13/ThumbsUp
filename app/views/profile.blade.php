@@ -1,5 +1,6 @@
 @extends('template')
 @section('content')
+<?php $counter=0;?>
 		<div class="posts">
 			<h1 class="content-subhead">Profile</h1>
 			<section class="post">

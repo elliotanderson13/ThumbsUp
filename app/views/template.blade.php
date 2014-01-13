@@ -93,13 +93,16 @@ li > a:hover {
                 {{Form::close()}}
                 </div>
                 </li>
+                <li class="menu-item-divided">
+                    <img style="position:relative;left:10px;top:15px" src="{{ url('img/logo.png')}}" width="215" height="48">
+                </li>
                 @endif
             </ul>
         </div>
     </div>
 
     <div id="main">
-        <div class="banner"><span>WITH HEARTFELT THANKS</span></div>
+        <div class="banner"><span>WITH <i>HEART</i>FELT THANKS</span></div>
         <div class="content">
         @yield('content')
 

@@ -38,6 +38,8 @@
 						@endforeach
 					</tbody>
 				</table>
+				<?php $data = "sdf"; ?>
+				<a href='{{ url("export")}}' class="btn btn-primary">Export</a>
 			</div>
 		</div>
 	</body>

@@ -43,6 +43,7 @@ Route::get('remove/{post_id}', 'AdminController@remove');
 Route::get('edit/{user_id}', 'AdminController@edit');
 Route::get('admin/confirm/{post_id}', 'AdminController@confirmRemove');
 Route::get('tv', 'HomeController@tvMode');
+Route::get('export', 'AdminController@export');
 });
 
 

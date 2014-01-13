@@ -46,4 +46,23 @@ class AdminController extends BaseController
 		$posts = Post::where('id', '>', '0')->orderBy('id', 'desc')->get();
 		return Redirect::action("AdminController@home", compact('posts'));
 	}
+	public function export(){
+		$posts = Post::where('id', '>', '0')->orderBy('id', 'desc')->get();
+		$data = array(
+			array('From'),
+		);
+		foreach ($posts as $post) {
+			$user = User::where('id', '=', $post->user_id)->first();
+			array_push($data, array($user->first_name.' '.$user->last_name));
+		}
+		print_r($data);
+		dd('die');
+		Excel::create('ExcelName')
+        ->sheet('SheetName')
+            ->with($data)
+        ->export('xls');
+        //Export::createExport($posts);
+
+		return Redirect::action("AdminController@home", compact('posts'));
+	}
 }

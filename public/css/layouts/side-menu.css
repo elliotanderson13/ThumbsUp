@@ -80,7 +80,7 @@ the menu have 100% height and be fixed on the page as the rest of it scrolls.
     margin-left: -150px; /* this should be "#menu" width */
     width: 235px;
     position: fixed;
-    top: 0;
+    top: 19px;
     left: 150px; /* this should be "#menu" width */
     bottom: 0;
     z-index: 1; /* so the menu or its navicon stays above all content */
