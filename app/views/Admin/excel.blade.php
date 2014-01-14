@@ -5,6 +5,7 @@
 			<th><b>From</b></th>
 			<th><b>To</b></th>
 			<th><b>Content</b></th>
+			<th><b>Comments</b></th>
 			<th><b>Created At</b></th>
 		</tr>
 	</thead>
@@ -15,6 +16,7 @@
 		$fromname = $from->first_name.' '.$from->last_name;
 		$to = User::where('id', $post->to_id)->first();
 		$toname = $to->first_name.' '.$to->last_name;
+		$comments = Comment::where('post_id', '=', $post->id)->first();
 		?>
 		<tr>
 			<td>{{$fromname}}</td>
