@@ -5,7 +5,6 @@
 			<th><b>From</b></th>
 			<th><b>To</b></th>
 			<th><b>Content</b></th>
-			<th><b>Comments</b></th>
 			<th><b>Created At</b></th>
 		</tr>
 	</thead>

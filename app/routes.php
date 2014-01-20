@@ -13,10 +13,10 @@ Route::get('/please/burn/my/eyes/out', function()
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/register','HomeController@register');
-Route::post('/register','HomeController@handleRegister');
-Route::post('/login', 'HomeController@handleLogin');
-Route::get('/login', 'HomeController@login');
+Route::get('register','HomeController@register');
+Route::post('register','HomeController@handleRegister');
+Route::post('login', 'HomeController@handleLogin');
+Route::get('login', 'HomeController@login');
 
 Route::group(array('before'=>'auth'), function()
 {
