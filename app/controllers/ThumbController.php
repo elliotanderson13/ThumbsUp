@@ -25,6 +25,7 @@ class ThumbController extends BaseController
 		$data = array('name'=>$name, 'poster'=>$user->first_name.' '.$user->last_name);
 		Mail::send('email', $data, function($message) use($email, $name)
 		{
+			$message->from('no-reply@withheartfeltthanks.com', 'With Heartfelt Thanks');
 		    $message->to($email, $name)->subject('With Heartfelt Thanks');
 		});
 		$username_id = $username_id->id;
