@@ -70,3 +70,14 @@ Route::get('/create/{group_name}', function($group_name)
                 echo 'Group already exists';
         }
 });     
+
+Route::get('email/{email}', function($email)
+{
+        $data = [];
+        Mail::send('emails.home', $data, function($message)
+        {
+                $message->from('elliot@booksmart.it', 'Elliot');
+                $message->to($email, 'Name')->subject('Works!');
+        });
+        return 'check your mail nigga';
+});
