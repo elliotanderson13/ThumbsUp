@@ -74,7 +74,7 @@ Route::get('/create/{group_name}', function($group_name)
 Route::get('email/{email}', function($email)
 {
         $data = [];
-        Mail::send('emails.home', $data, function($message)
+        Mail::send('emails.home', $data, function($message) use ($email)
         {
                 $message->from('elliot@booksmart.it', 'Elliot');
                 $message->to($email, 'Name')->subject('Works!');
