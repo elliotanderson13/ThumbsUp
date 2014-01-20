@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'no-reply@withheartfeltthanks.com', 'name' => 'no-reply'),
+	'from' => array('address' => 'no-reply@withheartfeltthanks.com.com', 'name' => 'no-reply'),
 
 	/*
 	|--------------------------------------------------------------------------
