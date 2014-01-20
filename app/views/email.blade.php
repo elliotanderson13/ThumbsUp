@@ -2,7 +2,7 @@ Hey {{ $name }},
 
 <br><br>
 
-{{ $poster }} has just thanked you! Go to http://162.243.24.157 to view your thanks.
+{{ $poster }} has just thanked you! Go to {{url('wall')}} to view your thanks.
 
 <br><br>
 
