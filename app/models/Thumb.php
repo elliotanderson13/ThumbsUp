@@ -9,5 +9,4 @@ class Thumb extends Eloquent
 	{
 		return $this->belongsTo('User');
 	}
-	public $timestamps = false;
 }
