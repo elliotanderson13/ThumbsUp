@@ -4,6 +4,8 @@
 $user = Sentry::getUser();
 $user_id = $user->id;
 ?>
+<h2>Profile</h2>
+
 		<div class="posts">
 			<h1 class="content-subhead">Profile</h1>
 			<section class="post">

@@ -4,39 +4,62 @@
 $user = Sentry::getUser();
 $user_id = $user->id;
 ?>
-<div class="posts">
-	<h1 class="content-subhead">Account Settings</h1>
-	<section class="post">
-	@if(Session::has('message'))
-		<p class="alert">{{Session::get('message')}}</p>
-	@endif
-	{{Form::open(array(
-		'url'=>'edit',
-		'class'=>'pure-form'
-	))}}
-		<header class="post-header">
-			<img class="post-avatar" height="48" width="48" style="float: left; margin-right: 20px;" src="img/{{$user_id}}/image01.jpg">
-			<h2 class="post-title">{{User::find($user_id)->first_name.' '.User::find($user_id)->last_name}}</h2>
-			<p class="post-meta">
-				<input type="text" name="title" placeholder="Title" value="{{User::find($user_id)->title}}" />
-			</p>
-		</header>
-		<div class="post-description">
-			<p>
-				<textarea name="description" placeholder="Description" style="width: 100%; resize: none;">{{User::find($user_id)->description}}</textarea>
-			</p>
+<div class="page-header">
+    <h1 id="timeline">Profile</h1>
+</div>
+@if(Session::has('message'))
+<p class="alert">{{Session::get('message')}}</p>
+@endif
+{{Form::open(array(
+	'url'=>'edit',
+	'class'=>'pure-form',
+	'enctype'=>'multipart/form-data'
+))}}
+<fieldset>
+	<div class="well wello">
+		<div class="form-group">
+			<label for="first_name">First Name: </label>
+		    <input type="text" name="first_name" id="email" class="form-control" placeholder="{{$user->first_name}}">
 		</div>
-		{{Form::submit('Update', array('class'=>'pure-button pure-button-primary'))}}
-		{{Form::close()}}
-		<br/ >
-		{{Form::open(array(
-			'url'=>'pic',
-			'enctype'=>'multipart/form-data'
-		))}}
-		<header class="post-header">
-		<h2 class="post-title">Upload/Change Profile Picture</h2>
-		</header>
-		<input type="file" name="pic"><br />
-		<input type="submit" value="Upload" class="pure-button pure-button-primary" />
-		{{Form::close()}}
+		<div class="form-group">
+			<label for="last_name">Last Name: </label>
+		    <input type="text" name="last_name" id="password" class="form-control" placeholder="{{$user->last_name}}">
+		</div>
+		<div class="form-group">
+			<label for="title">Title: </label>
+		    <input type="text" name="title" id="password" class="form-control" placeholder="{{$user->title}}">
+		</div>
+		<div class="form-group">
+			<label for="description">Description: </label>
+		    <textarea type="text" name="description" id="password" class="form-control" placeholder="{{$user->description}}"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="pic">Picture: </label><br>
+			<input type="file" title="Choose" name="pic">
+		</div>
+		<div class="form-group">
+			<label>Background:</label>
+			<input type="button" color="#003e74" class="btn btn-primary color">
+			<input type="button" color="#225f96" class="btn btn-info color">
+			<input type="button" color="#843549" class="btn btn-danger color">
+			<input type="button" color="#e57200" class="btn btn-warning color">
+			<input type="button" color="#6c953c" class="btn btn-success color">
+			<input type="hidden" class="color-hidden" name="color" value="{{$user->color}}">
+		</div>
+		<div class="row">	
+			<div class="col-xs-6 col-sm-6 col-md-6">
+		        <input type="submit" class="btn btn-success btn-block" value="Update">
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6">
+				<a href="{{url('settings')}}" class="btn btn-primary btn-block">Reload</a>
+			</div>
+		</div>
+	</div>
+</fieldset>
+{{Form::close()}}
+<script type="text/javascript">
+$('.color').click(function(){
+	$('.color-hidden').val($(this).attr('color'));
+})
+</script>
 @stop

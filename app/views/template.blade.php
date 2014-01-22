@@ -16,7 +16,7 @@ if (!Sentry::check())
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
 <title>With Heartfelt Thanks</title>
-<style type="text/css">
+<!--<style type="text/css">
 @font-face 
 {
     font-family: thumbs;
@@ -31,27 +31,73 @@ li > a:hover {
 #name-search:focus ~ .suggestions{
     display: block;
 }
-</style>
+</style>-->
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
-{{HTML::style('css/style.css')}}
+<script type="text/javascript" src="{{url('js/bootstrap.js')}}"></script>
+<script type="text/javascript" src="{{url('js/filestyle.js')}}"></script>
+
+<!--{{HTML::style('css/style.css')}}
 {{HTML::style('css/main.css')}}
-{{HTML::style('css/layouts/side-menu.css')}}
+HTML::style('css/layouts/side-menu.css')}}-->
+{{HTML::style('css/bootstrap.css')}}
+{{HTML::style('css/bootsnip.css')}}
 </head>
-<body>
+<body style="background-color:{{$user->color}}">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Heartfelt Thanks</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            @if(!Sentry::check())
+            <li><a href="{{url('login')}}">Login</a></li>
+            <li><a href="{{url('register')}}">Register</a></li>
+            @else
+            <li><a href="{{url('wall')}}">Wall</a></li>
+            <li><a href="{{url('profile/'.$username)}}">{{$user_name}}</a></li>
+            <li><a href="{{url('settings')}}">Settings</a></li>
+            <li><a href="{{url('tv')}}">TV Mode</a></li>
+            <li><a href="{{url('logout')}}">Logout</a></li>
+            @endif
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<div class="container">
+    <div class="well">
+
+        @yield('content')
+
+    </div>
+</div>
+
+
+<!--@LKJSDFLHJSDFLKJSDHF:SDUFH:-->
 
 
 
 
 
 
-<div id="layout">
+
+
+<!--<div id="layout">
     <!-- Menu toggle -->
-    <a href="#menu" id="menuLink" class="menu-link">
+    <!--<a href="#menu" id="menuLink" class="menu-link">
         <!-- Hamburger icon -->
-        <span></span>
+        <!--<span></span>
     </a>
 
     <div id="menu">
@@ -104,31 +150,35 @@ li > a:hover {
     <div id="main">
         <div class="banner"><span>WITH <i>HEART</i>FELT THANKS</span></div>
         <div class="content">
-        @yield('content')
 
          </div>
-</div>
+</div>-->
 
 
 
 
 
-<script src="js/ui.js"></script>
+<!--<script src="js/ui.js"></script>-->
 <script type="text/javascript">
+var x=0;
 function unfocus(){
+    if (x==1) {$(".suggestions").css("display", "none");x=0;}else{
     if ($('.suggestions:hover').length != 0) {$('#name-search').focus()}
     else{
         $(".suggestions").css("display", "none");
+    };
     };
 };
 $('.suggestions').click(function(){
     $('#name-search').val($('.suggestions div:hover span').html());
     $(".suggestions").css("display", "none");
+    x=1;
     $('#name-search').blur();
 });
 $(document).ready(function(){
-    
-
+    $('input[type=file]').bootstrapFileInput();
+    $(".suggestions").css("display", "none");
+    $('.suggestions').css('width', $('.suggestions').width()-38+'px');
     $('#name-search').keyup(function(){
         search();
     });
@@ -145,7 +195,8 @@ $(document).ready(function(){
                 data: {q: query_value},
                 cache: false,
                 success: function(html){
-                    //alert(html);
+
+                    $(".suggestions").css("display", "block");
                     $(".suggestions").html(html);
                 }
             });
