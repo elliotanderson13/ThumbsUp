@@ -55,6 +55,12 @@ body {
   background-color: #fff;
 }
 
+@media (max-width: 768px) {
+.timeline > li > .timeline-panel {
+  width: 92%;
+}
+}
+
 .timeline > li > .timeline-panel:before {
   position: absolute;
   top: 26px;
@@ -97,6 +103,24 @@ body {
   border-bottom-left-radius: 50%;
   */
 }
+@media (max-width: 768px) {
+.timeline > li > .timeline-panel {
+  width: 92%;
+}
+.timeline > li > .timeline-badge {
+  display: none;
+}
+}
+@media (min-width: 768px) {
+.timeline > li > .timeline-panel {
+  width: 46%;
+}
+.timeline > li > .timeline-badge {
+  left: 50%;
+  display: block;
+}
+}
+@media (min-width: 768px) {
 .timeline > li.timeline-inverted > .timeline-panel {
   float: right;
 }
@@ -111,6 +135,7 @@ body {
   border-right-width: 14px;
   left: -14px;
   right: auto;
+}
 }
 .timeline-badge > a {
   color: #C5C7C5 !important;
