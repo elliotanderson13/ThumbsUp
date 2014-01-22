@@ -45,8 +45,11 @@ HTML::style('css/layouts/side-menu.css')}}-->
 {{HTML::style('css/bootstrap.css')}}
 {{HTML::style('css/bootsnip.css')}}
 </head>
+@if(!Sentry::check())
+<body>
+@else
 <body style="background-color:{{$user->color}}">
-
+@endif
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
