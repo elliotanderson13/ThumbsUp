@@ -3,11 +3,9 @@ class SocialController extends BaseController
 {
 	public function like($post_id)
 	{
-		$user = Sentry::getUser();
-		$like = new Like;
-		$like->post_id = $post_id;
-		$like->user_id = $user->id;
-		$like->save();
+		$post = Post::find($post_id);
+		$post->likes++;
+		$post->save();
 		return Redirect::back();
 	}
 	public function comment($post_id)

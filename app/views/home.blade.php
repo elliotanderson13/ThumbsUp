@@ -69,7 +69,7 @@
                 <p>{{$post->content}}</p>
             </div>
             <div class="timeline-footer primary">
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
+                <small class="text-muted"><a href="{{url('like/'.$post->id)}}"><i class="glyphicon glyphicon-thumbs-up"></i></a>&nbsp;{{$post->likes}}</small>
                 <?php $comments = Comment::where('post_id', '=', $post->id)->get(); ?>
                 {{Form::open(array(
                 "url"=>"comment/$post->id", "class"=>"pure-form pure-form-inline pull-right form-inline", "role"=>"form"

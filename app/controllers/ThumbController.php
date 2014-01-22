@@ -31,6 +31,7 @@ class ThumbController extends BaseController
 		$username_id = $username_id->id;
 		
 		$post = new Post;
+		$post->likes = 0;
 		$post->user_id = $user_id;
 		$post->to_id = $username_id;
 		$post->content = $content;
